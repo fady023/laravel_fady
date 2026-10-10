@@ -6,22 +6,59 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    function index(){
-        $user = "sam";
-
-        if($user == "x"){
-            return "hello mr x";
-        }else if($user == "sam"){
-            return "hello ms sam";
-        }else if($user == "fed"){
-            return "hello mr fady";
-        }
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return "index page";
     }
 
-    function edit(){
-        return "this is edit page";
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return "create page";
     }
-    function create(){
-        return "this is create page";
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

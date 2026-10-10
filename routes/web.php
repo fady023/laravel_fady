@@ -19,10 +19,10 @@ Route::get("/edit",[UserController::class,"edit"]);
 Route::get("/create",[UserController::class,"create"]);
 }); */
 
-/* Route::controller(UserController::class)->prefix("/user")->group(function(){
+Route::controller(UserController::class)->prefix("/user")->group(function(){
    Route::get("/","index")->name("user.home");
-   Route::get("/edit","edit")->name("user.edit");
+   Route::get("{x}/edit","edit")->name("user.edit");
    Route::get("/create","create")->name("user.create");
-}); */
+}); 
 
-Route::resource("user",UserController::class);
+// Route::resource("user",UserController::class);

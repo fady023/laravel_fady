@@ -11,7 +11,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return "index page";
+       return view('users.index');
     }
 
     /**
@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return "create page";
+       return view('users.create');
     }
 
     /**
@@ -27,7 +27,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       if($request->name == "fedo"){
+        return "hello fedo";
+       }else{
+        return "hello other";
+       }
     }
 
     /**
@@ -43,7 +47,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-       return view('users.edit',compact('id'));
+           $name = "fed";
+    //     return view('users.edit',compact('id','name'));
+           return view('users.edit',['id'=>$id,'name'=>$name]);
     }
 
     /**

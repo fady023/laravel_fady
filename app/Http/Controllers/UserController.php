@@ -27,11 +27,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-       if($request->name == "fedo"){
-        return "hello fedo";
-       }else{
-        return "hello other";
-       }
+        $validated = $request->validate([
+            "name"=>"required|max:5",
+            "age"=>"required"
+        ]);
+
+        return $request->name;
+    
     }
 
     /**

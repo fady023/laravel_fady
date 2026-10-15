@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -11,7 +13,13 @@ class UserController extends Controller
      */
     public function index()
     {
-       return view('users.index');
+        $users = User::all();
+        // $users = User::where("name","like","%n")->get();
+        // $users = User::where("name","Nigel Feest")->get();
+        // $users = User::find(2);
+        // $users = User::where("id", ">", 5)->get();
+
+        return view('users.index', compact("users"));
     }
 
     /**
@@ -19,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-       return view('users.create');
+        return view('users.create');
     }
 
     /**
@@ -28,12 +36,24 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "name"=>"required|max:5",
-            "age"=>"required"
+            "name" => "required|max:50",
+            "email" => "required|unique:users|email",
+            "password" => "required|min:5"
         ]);
 
-        return $request->name;
-    
+     /*    $user = new User();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save(); */
+
+        $user = User::create([
+            "name" => $request->name,
+            "email" => $request->email,
+            "password"=>Hash::make($request->password) 
+        ]);
+
+        return redirect()->route("user.index")->with("success", "user inserted");
     }
 
     /**
@@ -49,9 +69,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-           $name = "fed";
-    //     return view('users.edit',compact('id','name'));
-           return view('users.edit',['id'=>$id,'name'=>$name]);
+        $name = "fed";
+        //     return view('users.edit',compact('id','name'));
+        return view('users.edit', ['id' => $id, 'name' => $name]);
     }
 
     /**

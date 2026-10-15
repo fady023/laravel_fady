@@ -1,6 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Users | People Portal')
+@section('title', 'Users')
+
+@push("styles")
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+@endpush
 
 @section('content')
     <div class="page-heading">
@@ -22,4 +26,23 @@
             </div>
         </div>
     </section>
+
+<table class="table theme-primary">
+<tr>
+  <th class="theme-danger">id</th>
+  <th class="theme-danger">name</th>
+  <th class="theme-danger">email</th>
+</tr>
+
+@foreach ($users as $user)
+<tr>
+  <td class="theme-primary">{{ $user->id }}</td>
+  <td class="theme-accent">{{ $user->name }}</td>
+  <td class="theme-success">{{ $user->email }}</td>
+</tr>
+@endforeach
+
+
+</table>
+
 @endsection

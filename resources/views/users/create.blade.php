@@ -34,18 +34,33 @@
                 </div>
 
                 <div>
-                    <label class="field-label" for="age">Age</label>
+                    <label class="field-label" for="mail">Email</label>
                     <input
                         class="field-input"
-                        id="age"
-                        name="age"
-                        type="number"
-                        min="0"
-                        value="{{ old('age') }}"
-                        placeholder="Enter their age"
+                        id="mail"
+                        name="email"
+                        type="email"
+                        value="{{ old('email') }}"
+                        placeholder="Email"
                         required
                     >
-                    @error('age')
+                    @error('email')
+                        <span class="field-error">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                     <div>
+                    <label class="field-label" for="pass">password</label>
+                    <input
+                        class="field-input"
+                        id="pass"
+                        name="password"
+                        type="password"
+                        value="{{ old('password') }}"
+                        placeholder="Password"
+                        required
+                    >
+                    @error('password')
                         <span class="field-error">{{ $message }}</span>
                     @enderror
                 </div>

@@ -32,6 +32,7 @@
   <th class="theme-danger">id</th>
   <th class="theme-danger">name</th>
   <th class="theme-danger">email</th>
+  <th class="theme-danger">options</th>
 </tr>
 
 @foreach ($users as $user)
@@ -39,6 +40,11 @@
   <td class="theme-primary">{{ $user->id }}</td>
   <td class="theme-accent">{{ $user->name }}</td>
   <td class="theme-success">{{ $user->email }}</td>
+    <td>
+       <a href="{{ route('user.show',$user->id) }}" class="btn">Show</a>
+       <a href="{{ route('user.edit',$user->id) }}" class="btn">Edit</a>
+       <a href="" class="btn">Delete</a>
+    </td>
 </tr>
 @endforeach
 

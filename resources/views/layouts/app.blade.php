@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', config('app.name', 'People'))</title>
+    <title>@yield('title', config('app.name', 'Fady'))</title>
     <style>
         :root {
             color-scheme: light;
@@ -399,7 +399,7 @@
         <div class="nav-wrap">
             <a class="brand" href="{{ url('/') }}">
                 <span class="brand-mark" aria-hidden="true">P</span>
-                <span>People Portal</span>
+                <span>Fady Project</span>
             </a>
             <nav class="site-nav" aria-label="Main navigation">
                 <a class="nav-link {{ request()->routeIs('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">Users</a>

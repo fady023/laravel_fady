@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -61,7 +62,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.show',compact("user"));
     }
 
     /**
@@ -69,9 +71,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $name = "fed";
-        //     return view('users.edit',compact('id','name'));
-        return view('users.edit', ['id' => $id, 'name' => $name]);
+        $user = User::findOrFail($id);
+
+        return view("users.edit",compact("user"));
     }
 
     /**
@@ -79,7 +81,28 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            "name" => "required|string|max:50",
+            "email" => [
+                "required",
+                "email",
+                Rule::unique("users", "email")->ignore($user->id),
+            ],
+            "password" => "nullable|string|min:5",
+        ]);
+
+        $user->name = $validated["name"];
+        $user->email = $validated["email"];
+
+        if (!empty($validated["password"])) {
+            $user->password = Hash::make($validated["password"]);
+        }
+
+        $user->save();
+
+        return redirect()->route("user.index")->with("success", "User updated.");
     }
 
     /**

@@ -43,7 +43,11 @@
     <td>
        <a href="{{ route('user.show',$user->id) }}" class="btn">Show</a>
        <a href="{{ route('user.edit',$user->id) }}" class="btn">Edit</a>
-       <a href="" class="btn">Delete</a>
+       <form action="{{ route('user.destroy', $user->id) }}" method="post" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this user?');">
+          @csrf
+          @method('DELETE')
+          <button type="submit" class="btn">Delete</button>
+       </form>
     </td>
 </tr>
 @endforeach

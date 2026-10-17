@@ -14,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $users = User::withTrashed()->get();
         // $users = User::where("name","like","%n")->get();
         // $users = User::where("name","Nigel Feest")->get();
         // $users = User::find(2);
@@ -111,5 +111,13 @@ class UserController extends Controller
         $user->delete();
 
         return redirect()->route("user.index")->with("success", "User deleted.");
+    }
+
+    public function restore($id)
+    {
+        $user = User::withTrashed()->findOrFail($id);
+        $user->restore();
+
+        return redirect()->route("user.index")->with("success", "User restored.");
     }
 }

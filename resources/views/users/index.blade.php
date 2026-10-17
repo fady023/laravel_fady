@@ -9,7 +9,7 @@
 @section('content')
     <div class="page-heading">
         <div>
-            <p class="eyebrow">Your directory</p>
+            <!-- <p class="eyebrow">Your directory</p> -->
             <h1>People, all in one place.</h1>
             <p class="page-description">Keep your team’s details organized and easy to find.</p>
         </div>
@@ -48,6 +48,9 @@
           @method('DELETE')
           <button type="submit" class="btn">Delete</button>
        </form>
+       @if($user->trashed())
+       <a href="{{ route('user.restore',$user->id) }}" class="btn">Restore</a>
+       @endif
     </td>
 </tr>
 @endforeach

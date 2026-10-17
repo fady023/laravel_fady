@@ -114,7 +114,7 @@
         .eyebrow {
             margin: 0 0 9px;
             color: #7c3aed;
-            font-size: 11px;
+            font-size: 22px;
             font-weight: 800;
             letter-spacing: 0.19em;
             text-transform: uppercase;
@@ -409,6 +409,13 @@
     </header>
 
     <main class="page-shell">
+
+        @session("success")
+        <div class="eyebrow">
+            {{ session("success") }}
+        </div>
+        @endsession
+
         @yield('content')
     </main>
 

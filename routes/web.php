@@ -29,3 +29,5 @@ Route::get("/create",[UserController::class,"create"]);
 });  */
 
 Route::resource("user",UserController::class);
+
+Route::get("/user/{id}/restore", [UserController::class, "restore"])->name("user.restore");

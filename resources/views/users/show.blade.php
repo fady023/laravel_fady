@@ -28,6 +28,16 @@
                     <span class="summary-label">User ID</span>
                     <span class="summary-value">{{ $user->id }}</span>
                 </div>
+
+                 <div class="summary-item">
+                    <span class="summary-label">Phone</span>
+                    <span class="summary-value">{{ $user->profile->phone }}</span>
+                </div>
+
+                 <div class="summary-item">
+                    <span class="summary-label">Address</span>
+                    <span class="summary-value">{{ $user->profile->address }}</span>
+                </div>
             </div>
         </div>
     </section>

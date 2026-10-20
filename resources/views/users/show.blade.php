@@ -138,12 +138,12 @@
 
                  <div class="summary-item">
                     <span class="summary-label">Phone</span>
-                    <span class="summary-value">{{ $user->profile->phone }}</span>
+                     <span class="summary-value">{{ $user->profile?->phone ?? 'Not provided' }}</span>
                 </div>
 
                  <div class="summary-item">
                     <span class="summary-label">Address</span>
-                    <span class="summary-value">{{ $user->profile->address }}</span>
+                     <span class="summary-value">{{ $user->profile?->address ?? 'Not provided' }}</span>
                 </div>
             </div>
         </div>

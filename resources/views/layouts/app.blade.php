@@ -404,6 +404,7 @@
             <nav class="site-nav" aria-label="Main navigation">
                 <a class="nav-link {{ request()->routeIs('user.index') ? 'active' : '' }}" href="{{ route('user.index') }}">Users</a>
                 <a class="nav-link {{ request()->routeIs('user.create') ? 'active' : '' }}" href="{{ route('user.create') }}">Add user</a>
+                <a class="nav-link {{ request()->routeIs('posts.index') ? 'active' : '' }}" href="{{ route('posts.index') }}">Posts</a>
             </nav>
         </div>
     </header>

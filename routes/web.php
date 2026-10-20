@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckName;
 use Illuminate\Support\Facades\Route;
@@ -31,3 +32,5 @@ Route::get("/create",[UserController::class,"create"]);
 Route::resource("user",UserController::class);
 
 Route::get("/user/{id}/restore", [UserController::class, "restore"])->name("user.restore");
+
+Route::resource("posts",PostController::class);

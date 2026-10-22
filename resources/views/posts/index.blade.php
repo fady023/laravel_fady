@@ -127,8 +127,7 @@
 @section('content')
     <div class="page-heading">
         <div>
-            <p class="eyebrow">Content library</p>
-            <h1>All posts</h1>
+            <p class="eyebrow">All posts</p>
             <p class="page-description">Browse posts and the users who created them.</p>
         </div>
     </div>

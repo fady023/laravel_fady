@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckName;
@@ -29,8 +30,15 @@ Route::get("/create",[UserController::class,"create"]);
    Route::get("/create","create")->name("user.create");
 });  */
 
-Route::resource("user",UserController::class);
+Route::resource("user",UserController::class)->middleware("auth");
 
 Route::get("/user/{id}/restore", [UserController::class, "restore"])->name("user.restore");
 
 Route::resource("posts",PostController::class);
+
+Route::get("/login",[AuthController::class,"login"])->name("login");
+
+Route::post("/login",[AuthController::class,"authenticate"])->name("login.authenticate");
+
+Route::get("/register",[AuthController::class,"register"]);
+Route::post("/register",[AuthController::class,"store"])->name("register.store");

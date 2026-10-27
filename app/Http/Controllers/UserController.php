@@ -12,6 +12,7 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $users = User::withTrashed()->get();

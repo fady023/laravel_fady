@@ -3,7 +3,6 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\CheckName;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,7 +29,11 @@ Route::get("/create",[UserController::class,"create"]);
    Route::get("/create","create")->name("user.create");
 });  */
 
-Route::resource("user",UserController::class)->middleware("auth");
+
+Route::resource("user", UserController::class)
+    ->middleware("auth")
+    ->withoutMiddlewareFor("create", "auth");
+
 
 Route::get("/user/{id}/restore", [UserController::class, "restore"])->name("user.restore");
 

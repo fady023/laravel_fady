@@ -1,4 +1,3 @@
-
 # Employee Management App
 
 A Laravel application to store and display employee data.

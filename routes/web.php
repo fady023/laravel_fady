@@ -1,4 +1,4 @@
-Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
+
 <?php
 
 use App\Http\Controllers\AuthController;

@@ -1,46 +1,30 @@
 
-<?php
+<<?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get("/test",function(){
+
+Route::get('/test', function () {
     return view('users.testform');
 });
-/* Route::get("/home",function(){
-    return view("myhome");
-}); */
 
-Route::view("home","myhome");
+Route::view('/home', 'myhome');
 
-
-Route::get('/users', [UserController::class, 'index']);
+// مسارات المستخدمين (المفرد والجمع)
+Route::get('/users', [UserController::class, 'index'])->name('users.index');
 Route::get('/user', [UserController::class, 'index']);
 
-Route::prefix('user')->group(function(){
-Route::get('/', [UserController::class, 'index']);
-Route::get('/edit', [UserController::class, 'edit']);
-Route::get('/create', [UserController::class, 'create']);
-});
+// بقية مسارات User
+Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
+Route::get('/user/edit', [UserController::class, 'edit']);
+Route::get('/user/{id}/restore', [UserController::class, 'restore'])->name('user.restore');
 
-
-Route::resource("user", UserController::class)
-    ->middleware("auth")
-    ->withoutMiddlewareFor("create", "auth");
-
-
-Route::get("/user/{id}/restore", [UserController::class, "restore"])->name("user.restore");
-
-Route::resource("posts",PostController::class);
-
-Route::get("/login",[AuthController::class,"login"])->name("login");
-
-Route::post("/login",[AuthController::class,"authenticate"])->name("login.authenticate");
-
-Route::get("/register",[AuthController::class,"register"]);
-Route::post("/register",[AuthController::class,"store"])->name("register.store");
+// المسارات الأخرى
+Route::resource('posts', PostController::class);
+Route::get('/login', [AuthController::class, 'login'])->name('login');

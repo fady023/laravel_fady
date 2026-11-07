@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::withTrashed()->get();
+        $users = User::all();
         // $users = User::where("name","like","%n")->get();
         // $users = User::where("name","Nigel Feest")->get();
         // $users = User::find(2);

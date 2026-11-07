@@ -1,3 +1,4 @@
+Route::get('/user', [App\Http\Controllers\UserController::class, 'index']);
 <?php
 
 use App\Http\Controllers\AuthController;
@@ -17,17 +18,13 @@ Route::get("/test",function(){
 
 Route::view("home","myhome");
 
-/* Route::prefix("/user")->group(function(){
-Route::get("/",[UserController::class,"index"]);
-Route::get("/edit",[UserController::class,"edit"]);
-Route::get("/create",[UserController::class,"create"]);
-}); */
 
-/* Route::controller(UserController::class)->prefix("/user")->group(function(){
-   Route::get("/","index")->name("user.home");
-   Route::get("{x}/edit","edit")->name("user.edit");
-   Route::get("/create","create")->name("user.create");
-});  */
+
+Route::prefix('user')->group(function(){
+Route::get('/', [UserController::class, 'index']);
+Route::get('/edit', [UserController::class, 'edit']);
+Route::get('/create', [UserController::class, 'create']);
+});
 
 
 Route::resource("user", UserController::class)

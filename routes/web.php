@@ -19,6 +19,8 @@ Route::get("/test",function(){
 Route::view("home","myhome");
 
 
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'index']);
 
 Route::prefix('user')->group(function(){
 Route::get('/', [UserController::class, 'index']);
